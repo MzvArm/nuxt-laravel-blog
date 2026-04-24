@@ -13,9 +13,10 @@ return new class extends Migration {
 
             $table->string('title'); // заголовок поста
             $table->string('slug')->unique(); // уникальный slug для URL
-
+            $table->string('author'); // автор публикации
+            $table->string('topic'); // тема поста
             $table->text('content'); // основной текст поста
-
+            $table->timestamp('published_at')->nullable(); // дата публикации
             $table->timestamps(); // created_at и updated_at
         });
     }

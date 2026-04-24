@@ -6,3 +6,4 @@ use App\Http\Controllers\Api\PostController;
 // API маршруты
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{slug}', [PostController::class, 'show']);
+Route::post('/posts', [PostController::class, 'store']);

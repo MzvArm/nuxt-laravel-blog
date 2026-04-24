@@ -13,9 +13,10 @@ class PostResource extends JsonResource
         return [
             'title' => $this->title,
             'slug' => $this->slug,
+            'author' => $this->author,
+            'topic' => $this->topic,
             'content' => $this->content,
-
-            // Отдаём дату в удобном формате
+            'published_at' => $this->published_at,
             'created_at' => $this->created_at,
         ];
     }
