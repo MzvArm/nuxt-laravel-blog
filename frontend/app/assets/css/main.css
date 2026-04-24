@@ -1,0 +1,48 @@
+/* Базовый стиль как у bash.today */
+
+body {
+    margin: 0;
+    background: #0e0e0e;
+    color: #d4d4d4;
+    font-family: "Inter", system-ui;
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Заголовок */
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+/* Пост как на bash.today */
+.post-block {
+    background: #181818;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-left: 3px solid #444;
+    line-height: 1.5;
+}
+
+/* карточка */
+.card {
+    background: #151515;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    transition: 0.2s;
+}
+
+.card:hover {
+    background: #1d1d1d;
+}
+
+button {
+    cursor: pointer;
+}
