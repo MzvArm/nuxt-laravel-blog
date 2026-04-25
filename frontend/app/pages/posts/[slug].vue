@@ -1,82 +1,113 @@
-<script setup lang="ts">
-import Header from '../../components/Header.vue'
-import Footer from '../../components/Footer.vue'
-
-const route = useRoute()
-const { getPost } = usePosts()
-
-const slug = route.params.slug as string
-
-const { data, pending } = await getPost(slug)
-
-const formatDate = (date?: string) => {
-  if (!date) return ''
-  return new Date(date).toLocaleDateString('ru-RU', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric'
-  })
-}
-</script>
-
 <template>
-  <div class="page-shell">
-    <Header />
+  <div class="post-page">
+    <UContainer>
+      <UCard class="post-card" radius="3xl" border>
+        <img
+          v-if="post?.image_path"
+          :src="post.image_path"
+          :alt="post?.title"
+          class="post-image"
+        />
 
-    <UCard class="post-detail" radius="xxl" border>
-      <div class="post-top">
-        <UBadge color="warning" variant="soft" size="sm">Пост</UBadge>
-        <span class="post-date">{{ formatDate(data?.created_at) }} · 6 мин чтения</span>
-      </div>
+        <div class="card-head">
+          <span class="post-meta"
+            >{{ formatDate(post?.published_at || post?.created_at) }} · 3-5 мин
+            чтения</span
+          >
+        </div>
 
-      <div v-if="pending" class="post-loading">
-        <USkeleton height="40px" />
-        <USkeleton height="220px" />
-      </div>
+        <h1>{{ post?.title || "Пост не найден" }}</h1>
+        <p class="author">Автор: {{ post?.author }}</p>
+        <p class="topic">Тема: {{ post?.topic }}</p>
 
-      <div v-else>
-        <h1>{{ data?.title }}</h1>
-        <div class="post-content">{{ data?.content }}</div>
-      </div>
-    </UCard>
+        <div class="content" v-html="post?.content"></div>
 
-    <Footer />
+        <div class="card-footer">
+          <NuxtLink to="/posts">
+            <UButton variant="ghost" size="sm" color="warning" class="u-button"
+              >Назад к ленте</UButton
+            >
+          </NuxtLink>
+        </div>
+      </UCard>
+    </UContainer>
   </div>
 </template>
 
+<script setup lang="ts">
+import { computed } from "vue";
+
+const route = useRoute();
+const slug = route.params.slug as string;
+
+const { getPost } = usePosts();
+const { data: postData } = getPost(slug);
+
+const post = computed(() => postData.value?.data);
+// const post = computed(() => data.value?.data); //Тест
+
+const formatDate = (date: string): string => {
+  return new Date(date).toLocaleDateString("ru-RU", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+};
+
+const readingTime = computed(() => {
+  if (!post.value?.content) return 0;
+  const words = post.value.content.split(" ").length;
+  return Math.ceil(words / 200); // Предполагаем 200 слов в минуту
+});
+</script>
+
 <style scoped>
-.page-shell {
-  max-width: 900px;
+.post-page {
+  padding: 2rem 0;
+}
+
+.post-card {
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1.25rem 4rem;
 }
 
-.post-detail {
-  display: grid;
-  gap: 2rem;
+.post-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
 }
 
-.post-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+.card-head {
+  margin-bottom: 1rem;
 }
 
-.post-date {
-  color: var(--muted);
+.post-meta {
+  color: #666;
+  font-size: 0.9rem;
 }
 
 h1 {
-  margin: 0;
-  font-size: clamp(2rem, 3vw, 3.4rem);
-  line-height: 1.05;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-.post-content {
-  color: var(--text);
-  line-height: 1.85;
-  white-space: pre-wrap;
+.author,
+.topic {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.content {
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.card-footer {
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
 }
 </style>

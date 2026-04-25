@@ -6,17 +6,25 @@
     </div>
 
     <nav class="nav-links">
-      <NuxtLink to="/" class="nav-link">
-        <UButton variant="ghost" size="sm" color="neutral" class="u-button">Главная</UButton>
+      <NuxtLink to="/posts" class="nav-link">
+        <UButton variant="ghost" size="sm" color="neutral" class="u-button"
+          >Главная</UButton
+        >
       </NuxtLink>
       <NuxtLink to="/posts" class="nav-link">
-        <UButton variant="ghost" size="sm" color="warning" class="u-button">Посты</UButton>
+        <UButton variant="ghost" size="sm" color="warning" class="u-button"
+          >Посты</UButton
+        >
       </NuxtLink>
       <NuxtLink to="/posts" class="nav-link">
-        <UButton variant="ghost" size="sm" color="neutral" class="u-button">Авторы</UButton>
+        <UButton variant="ghost" size="sm" color="neutral" class="u-button"
+          >Авторы</UButton
+        >
       </NuxtLink>
       <NuxtLink to="/posts" class="nav-link">
-        <UButton variant="ghost" size="sm" color="neutral" class="u-button">Контакты</UButton>
+        <UButton variant="ghost" size="sm" color="neutral" class="u-button"
+          >Контакты</UButton
+        >
       </NuxtLink>
     </nav>
   </header>
