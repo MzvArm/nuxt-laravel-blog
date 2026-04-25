@@ -26,9 +26,9 @@ const categories = [
 
     <UCard class="hero-card" radius="xxl" border>
       <div class="hero-copy">
-        <UBadge color="warning" variant="soft" size="sm">Журнал</UBadge>
+        <UBadge color="warning" variant="soft" size="sm">Блог</UBadge>
         <h1>Пишем о мероприятиях: где, как и за сколько</h1>
-        <p class="hero-lead">Промежуток между идеей и событием — это контент. Премиальный белый фон, лаконичная серая типографика и акцентные оранжевые детали.</p>
+        <!-- <p class="hero-lead">Промежуток между идеей и событием — это контент. Премиальный белый фон, лаконичная серая типографика и акцентные оранжевые детали.</p> -->
       </div>
 
       <div class="hero-action">
@@ -43,8 +43,8 @@ const categories = [
         <p>Собрали ключевые публикации, чтобы открывать городские локации, планировать праздники и быстро выбрать подрядчика.</p>
       </div>
       <div class="featured-actions">
-        <UButton variant="outline" size="sm" color="warning">Гид по площадкам</UButton>
-        <UButton variant="outline" size="sm" color="warning">Тренды 2026</UButton>
+        <UButton variant="outline" size="sm" color="warning" class="u-button">Гид по площадкам</UButton>
+        <UButton variant="outline" size="sm" color="warning" class="u-button">Тренды 2026</UButton>
       </div>
     </UCard>
 
@@ -55,7 +55,7 @@ const categories = [
         variant="ghost"
         size="sm"
         color="warning"
-        class="topic-pill"
+        class="u-button""
       >
         {{ category }}
       </UButton>

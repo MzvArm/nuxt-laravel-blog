@@ -16,6 +16,7 @@ class PostResource extends JsonResource
             'author' => $this->author,
             'topic' => $this->topic,
             'content' => $this->content,
+            'image_path' => $this->image_path ? asset('storage/' . $this->image_path) : null,
             'published_at' => $this->published_at,
             'created_at' => $this->created_at,
         ];

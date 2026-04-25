@@ -46,6 +46,31 @@ h1 {
     border: none;
 }
 
+/* Глобальные стили для всех кнопок Nuxt UI */
+.u-button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 7px 10px;
+    border-radius: 16px !important; /* Увеличенное закругление */
+    border: 1px solid #ff7a00; /* Убираем границу */
+    background-color: #faecbc87 !important; /* Нежный желтый фон */
+    /* color: #de7433e7 !important; Темный текст для контраста */
+    color: #4a4847e7 !important;
+    transition: background-color 0.2s ease;
+}
+
+.u-button:hover {
+    background-color: #fde68a !important; /* Светлее при наведении */
+}
+
+.u-button--color-warning {
+    background-color: #fed7aa !important; /* Нежный оранжевый для warning */
+    color: #9a3412 !important;
+}
+
+.u-button--color-warning:hover {
+    background-color: #fdba74 !important;
+}
+
 /* Блоки поста */
 .post-block {
     background: #ffffff;

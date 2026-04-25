@@ -2,21 +2,21 @@
   <header class="blog-header">
     <div class="brand">
       <NuxtLink to="/posts" class="brand-title">bash.today</NuxtLink>
-      <p class="brand-subtitle">Журнал об ивентах, местах и кейсах</p>
+      <p class="brand-subtitle">Блог об ивентах, местах и кейсах</p>
     </div>
 
     <nav class="nav-links">
       <NuxtLink to="/" class="nav-link">
-        <UButton variant="ghost" size="sm" color="neutral">Главная</UButton>
+        <UButton variant="ghost" size="sm" color="neutral" class="u-button">Главная</UButton>
       </NuxtLink>
       <NuxtLink to="/posts" class="nav-link">
-        <UButton variant="ghost" size="sm" color="warning">Посты</UButton>
+        <UButton variant="ghost" size="sm" color="warning" class="u-button">Посты</UButton>
       </NuxtLink>
       <NuxtLink to="/posts" class="nav-link">
-        <UButton variant="ghost" size="sm" color="neutral">Авторы</UButton>
+        <UButton variant="ghost" size="sm" color="neutral" class="u-button">Авторы</UButton>
       </NuxtLink>
       <NuxtLink to="/posts" class="nav-link">
-        <UButton variant="ghost" size="sm" color="neutral">Контакты</UButton>
+        <UButton variant="ghost" size="sm" color="neutral" class="u-button">Контакты</UButton>
       </NuxtLink>
     </nav>
   </header>

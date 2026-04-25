@@ -1,8 +1,10 @@
 ﻿<template>
   <UCard class="post-card" radius="3xl" border>
     <NuxtLink :to="`/posts/${post.slug}`" class="card-link">
+      <img v-if="post.image_path" :src="post.image_path" :alt="post.title" class="post-image" />
+      
       <div class="card-head">
-        <UBadge color="warning" variant="soft" size="sm">Блог</UBadge>
+        <!-- <UBadge color="warning" variant="soft" size="sm">Блог</UBadge> -->
         <span class="post-meta">{{ formatDate(post.created_at) }} · 4 мин чтения</span>
       </div>
 
@@ -10,7 +12,7 @@
       <p class="excerpt">{{ excerpt }}</p>
 
       <div class="card-footer">
-        <UButton variant="ghost" size="sm" color="warning" class="read-button">Читать</UButton>
+        <UButton variant="ghost" size="sm" color="warning" class="u-button">Читать</UButton>
       </div>
     </NuxtLink>
   </UCard>
@@ -23,6 +25,7 @@ type Post = {
   title: string
   slug: string
   content: string
+  image_path?: string | null
   created_at: string
 }
 
@@ -49,6 +52,8 @@ const excerpt = computed(() => {
 .post-card {
   overflow: hidden;
   border-radius: 32px;
+  padding: 1.5rem;
+  border: 1px solid #f97316; /* Оранжевый бордер */
 }
 
 .card-link {
@@ -56,6 +61,14 @@ const excerpt = computed(() => {
   gap: 1.25rem;
   color: inherit;
   text-decoration: none;
+}
+
+.post-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  /* margin: -1.5rem -1.5rem 0 -1.5rem; */
 }
 
 .card-head {

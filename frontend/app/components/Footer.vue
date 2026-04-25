@@ -3,7 +3,7 @@
     <div class="footer-grid">
       <div>
         <NuxtLink to="/posts" class="footer-logo">bash.today</NuxtLink>
-        <p>Журнал о мероприятиях, площадках и сервисах для праздников.</p>
+        <p>Блог о мероприятиях, площадках и сервисах для праздников.</p>
       </div>
 
       <div>

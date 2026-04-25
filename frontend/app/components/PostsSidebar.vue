@@ -3,30 +3,30 @@
     <UCard class="sidebar-card" radius="xxl" border>
       <p class="sidebar-title">Категории</p>
       <ul class="sidebar-list">
-        <li><UButton variant="ghost" size="sm" color="neutral">Все</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral">Места в Москве</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral">День рождения</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral">Кейтеринг</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral">Свадьба</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Все</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Места в Москве</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">День рождения</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Кейтеринг</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Свадьба</UButton></li>
       </ul>
     </UCard>
 
     <UCard class="sidebar-card" radius="xxl" border>
       <p class="sidebar-title">Блоги авторов</p>
       <ul class="sidebar-list">
-        <li><UButton variant="ghost" size="sm" color="neutral">Bash Today</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral">B-Style</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral">С дзеном по кухне</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral">Все авторы</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Bash Today</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">B-Style</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">С дзеном по кухне</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Все авторы</UButton></li>
       </ul>
     </UCard>
 
     <UCard class="sidebar-card" radius="xxl" border>
       <p class="sidebar-title">Популярное</p>
       <ul class="sidebar-list compact">
-        <li><UButton variant="ghost" size="sm" color="neutral">ТОП-25 кейтеринговых компаний</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral">Лазертаг в Москве — топ-20</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral">Лучшие места для выпускного</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">ТОП-25 кейтеринговых компаний</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Лазертаг в Москве — топ-20</UButton></li>
+        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Лучшие места для выпускного</UButton></li>
       </ul>
     </UCard>
   </aside>
@@ -36,7 +36,7 @@
 
 <style scoped>
 .posts-sidebar {
-  display: grid;
+  /* display: grid; */
   gap: 1.5rem;
 }
 

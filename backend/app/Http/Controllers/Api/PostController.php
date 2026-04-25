@@ -39,6 +39,7 @@ class PostController extends Controller
             'published_at' => 'nullable|date',
             'topic' => 'required|string|max:255',
             'content' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         $slug = Str::slug($data['title']);
@@ -50,6 +51,11 @@ class PostController extends Controller
             $counter++;
         }
 
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('posts', 'public');
+        }
+
         $post = Post::create([
             'title' => $data['title'],
             'author' => $data['author'],
@@ -57,6 +63,7 @@ class PostController extends Controller
             'content' => $data['content'],
             'published_at' => $data['published_at'] ?? now(),
             'slug' => $slug,
+            'image_path' => $imagePath,
         ]);
 
         return new PostResource($post);
