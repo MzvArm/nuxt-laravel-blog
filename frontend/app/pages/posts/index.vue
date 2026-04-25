@@ -6,18 +6,32 @@ import PostList from '../../components/PostList.vue'
 import PostsSidebar from '../../components/PostsSidebar.vue'
 
 const { getPosts } = usePosts()
-const { data, pending, refresh } = await getPosts()
+const { data, pending, refresh: refreshPosts } = await getPosts()
+
+const selectedTopic = ref<string>('Все')
 
 const categories = [
   'Все',
-  'Места в Москве',
-  'День рождения',
-  'Кейтеринг',
   'Свадьба',
-  'Event-бизнес',
-  'Рестораны',
-  'Девичник'
+  'День рождения',
+  'Корпоратив',
+  'Фотосессия',
+  'Ресторан',
+  'Выпускной',
+  'Вечеринки'
 ]
+
+const filteredPosts = computed(() => {
+  if (!data.value?.data) return []
+  if (selectedTopic.value === 'Все') {
+    return data.value.data
+  }
+  return data.value.data.filter(post => post.topic === selectedTopic.value)
+})
+
+const refresh = async () => {
+  await refreshPosts()
+}
 </script>
 
 <template>
@@ -48,7 +62,7 @@ const categories = [
       </div>
     </UCard>
 
-    <section class="topics-row">
+    <!-- <section class="topics-row">
       <UButton
         v-for="category in categories"
         :key="category"
@@ -59,7 +73,7 @@ const categories = [
       >
         {{ category }}
       </UButton>
-    </section>
+    </section> -->
 
     <div class="content-layout">
       <main class="main-column">
@@ -68,7 +82,7 @@ const categories = [
             <p class="subtitle">НЕДАВНЕЕ</p>
             <h2>Последние статьи</h2>
           </div>
-          <span class="posts-count">{{ data?.data?.length ?? 0 }} публикаций</span>
+          <span class="posts-count">{{ filteredPosts.length }} публикаций</span>
         </div>
 
         <div v-if="pending" class="skeleton-grid">
@@ -76,11 +90,15 @@ const categories = [
         </div>
 
         <div v-else>
-          <PostList :posts="data?.data ?? []" />
+          <PostList :posts="filteredPosts" />
         </div>
       </main>
 
-      <PostsSidebar />
+      <PostsSidebar
+        :categories="categories"
+        :selectedTopic="selectedTopic"
+        @select-topic="selectedTopic = $event"
+      />
     </div>
 
     <Footer />

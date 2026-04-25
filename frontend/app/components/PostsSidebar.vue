@@ -3,11 +3,17 @@
     <UCard class="sidebar-card" radius="xxl" border>
       <p class="sidebar-title">Категории</p>
       <ul class="sidebar-list">
-        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Все</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Места в Москве</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">День рождения</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Кейтеринг</UButton></li>
-        <li><UButton variant="ghost" size="sm" color="neutral" class="u-button">Свадьба</UButton></li>
+        <li v-for="category in categories" :key="category">
+          <UButton
+            variant="ghost"
+            size="sm"
+            :color="selectedTopic === category ? 'warning' : 'neutral'"
+            class="u-button"
+            :class="{ active: selectedTopic === category }"
+            @click="selectTopic(category)">
+            {{ category }}
+          </UButton>
+        </li>
       </ul>
     </UCard>
 
@@ -32,7 +38,19 @@
   </aside>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps<{
+  categories: string[]
+  selectedTopic: string
+}>()
+const emit = defineEmits<{
+  (e: 'select-topic', topic: string): void
+}>()
+
+const selectTopic = (topic: string) => {
+  emit('select-topic', topic)
+}
+</script>
 
 <style scoped>
 .posts-sidebar {
@@ -72,5 +90,10 @@
 
 .sidebar-list :deep(button):hover {
   color: var(--accent);
+}
+
+.sidebar-list :deep(button.active) {
+  background: rgba(217, 119, 6, 0.25) !important;
+  color: var(--accent) !important;
 }
 </style>

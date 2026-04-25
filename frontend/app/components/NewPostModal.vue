@@ -18,6 +18,7 @@
             label="Заголовок"
             placeholder="Например, Как я писал блог"
             required
+            style="width: 100%;"
           />
 
           <UInput
@@ -25,6 +26,7 @@
             label="Автор"
             placeholder="Например, Иван Иванов"
             required
+            style="width: 100%;"
           />
 
           <!-- <UInput
@@ -54,6 +56,7 @@
             placeholder="Напишите краткое описание публикации…"
             :rows="6"
             required
+            style="width: 100%;"
           />
 
           <div class="form-group">
@@ -158,7 +161,7 @@ const handleSubmit = async () => {
     const formData = new FormData()
     formData.append('title', title.value)
     formData.append('author', author.value)
-    formData.append('published_at', publishedAt.value || today)
+    // formData.append('published_at', publishedAt.value || today)
     formData.append('topic', topic.value)
     formData.append('content', description.value)
     if (imageFile.value) {
@@ -258,6 +261,7 @@ const handleSubmit = async () => {
 
 .form-select {
   padding: 0.75rem 1rem;
+  padding-right: 120px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   background-color: white;
@@ -328,9 +332,8 @@ const handleSubmit = async () => {
   margin-top: 1rem;
 }
 
-@media (max-width: 640px) {
-  .modal-card {
-    padding: 1.25rem;
-  }
+.u-input {
+  /* width: 500px !important;
+background-color: #1f2937 !important; */
 }
 </style>

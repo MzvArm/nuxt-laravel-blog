@@ -5,11 +5,11 @@
       
       <div class="card-head">
         <!-- <UBadge color="warning" variant="soft" size="sm">Блог</UBadge> -->
-        <span class="post-meta">{{ formatDate(post.created_at) }} · 4 мин чтения</span>
+        <span class="post-meta">{{ formatDate(post.created_at) }} · 3-5 мин чтения</span>
       </div>
 
       <h2>{{ post.title }}</h2>
-      <p class="excerpt">{{ excerpt }}</p>
+      <p class="excerpt">{{ post.content }}</p>
 
       <div class="card-footer">
         <UButton variant="ghost" size="sm" color="warning" class="u-button">Читать</UButton>
@@ -40,12 +40,6 @@ const formatDate = (date: string): string => {
     year: 'numeric'
   })
 }
-
-const excerpt = computed(() => {
-  return post.content
-    ? post.content.slice(0, 150).trim() + (post.content.length > 150 ? '…' : '')
-    : ''
-})
 </script>
 
 <style scoped>
@@ -82,6 +76,14 @@ const excerpt = computed(() => {
 .post-meta {
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.excerpt {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
 }
 
 h2 {
